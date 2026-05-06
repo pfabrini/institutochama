@@ -1,1 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="DDR · Desafio Dinheiro Rápido · 21 dias para colocar dinheiro no seu bolso. De 21 de maio a 11 de junho. Investimento: R$21.">
+<title>DDR · Desafio Dinheiro Rápido — 21 dias para mudar sua realidade financeira</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* surfaces */
+  --bg:#0a0a0a;
+  --bg-2:#111111;
+  --surface:#161616;
+  --surface-2:#1c1c1c;
+  --border:#262626;
+  --border-strong:#383838;
+  --border-gold:rgba(255,184,0,.22);
+
+  /* text */
+  --text:#f5f5f5;
+  --text-dim:#b8b8b8;
+  --text-muted:#7a7a7a;
+
+  /* DDR gold palette */
+  --gold:#FFB800;
+  --gold-bright:#FFD740;
+  --gold-deep:#E89A00;
+  --gold-dark:#8a6200;
+
+  /* CTA neon */
+  --neon:#99FF00;
+  --neon-deep:#7ad400;
+  --neon-dark:#3d6100;
+
+  /* radii / motion */
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  font-weight:400;
+  overflow-x:hidden;
+  min-height:100vh;
+  background-image:
+    radial-gradient(circle at 80% -10%, rgba(255,184,0,.12), transparent 45%),
+    radial-gradient(circle at 0% 30%, rgba(255,184,0,.06), transparent 40%),
+    radial-gradient(circle at 100% 80%, rgba(255,184,0,.08), transparent 50%);
+}
+
+/* subtle grid pattern over the whole page */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,184,0,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,184,0,.04) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse at center,black 0%,transparent 85%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 0%,transparent 85%);
+  z-index:0;
+}
+
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--gold);font-weight:800}
+strong{font-weight:700;color:var(--text)}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+main{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 20px}
+@media (min-width:768px){
+  main{max-width:1080px;padding:0 40px}
+}
+
+/* ============================================================
+   SHARED — eyebrow / labels (JetBrains Mono)
+   ============================================================ */
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:var(--gold);
+}
+@media (min-width:768px){
+  .eyebrow{font-size:13px;margin-bottom:22px}
+  .eyebrow::before{width:36px}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  padding:32px 0 48px;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
+@media (min-width:768px){
+  .hero{padding:64px 0 80px}
+}
+
+/* top badge */
+.badge-top{
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#0a0a0a;
+  background:var(--gold);
+  padding:8px 14px;
+  border-radius:100px;
+  box-shadow:0 0 24px rgba(255,184,0,.4);
+  margin-bottom:32px;
+  animation:pulseBadge 2.4s var(--ease) infinite;
+}
+.badge-top::before{
+  content:'';
+  width:6px;height:6px;border-radius:50%;
+  background:#0a0a0a;
+  animation:dotBlink 1.2s ease infinite;
+}
+@keyframes pulseBadge{
+  0%,100%{box-shadow:0 0 24px rgba(255,184,0,.4)}
+  50%{box-shadow:0 0 36px rgba(255,184,0,.7)}
+}
+@keyframes dotBlink{
+  0%,100%{opacity:1}
+  50%{opacity:.25}
+}
+@media (min-width:768px){
+  .badge-top{font-size:12px;padding:10px 18px;margin-bottom:48px}
+}
+
+/* ===== HERO LOGO ===== */
+.hero-logo{
+  display:block;
+  width:100%;
+  max-width:420px;
+  height:auto;
+  margin:8px auto 28px;
+  filter:drop-shadow(0 18px 40px rgba(0,0,0,.6)) drop-shadow(0 0 60px rgba(255,184,0,.08));
+  user-select:none;
+  -webkit-user-drag:none;
+  animation:logoIn .9s var(--ease) both;
+}
+@keyframes logoIn{
+  from{opacity:0;transform:translateY(12px) scale(.97)}
+  to  {opacity:1;transform:translateY(0)    scale(1)}
+}
+@media (min-width:768px){
+  .hero-logo{max-width:560px;margin:16px auto 40px}
+}
+
+/* dates strip under title */
+.dates-strip{
+  background:#0a0a0a;
+  border:1px solid var(--border-gold);
+  padding:14px 18px;
+  margin-bottom:32px;
+  position:relative;
+  overflow:hidden;
+}
+.dates-strip::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,184,0,.06),transparent);
+}
+.dates-strip-text{
+  font-family:'Manrope',sans-serif;
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:-.005em;
+  color:var(--text);
+  line-height:1.3;
+  position:relative;
+}
+.dates-strip-text strong{color:var(--gold);font-weight:800}
+@media (min-width:768px){
+  .dates-strip{padding:18px 24px;margin-bottom:40px}
+  .dates-strip-text{font-size:18px}
+}
+
+/* ===== HERO PILLARS — Foco / Ação / Resultados / Dinheiro ===== */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:32px;
+}
+@media (min-width:768px){
+  .pillars{grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:48px}
+}
+.pillar{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  padding:14px 12px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  transition:border-color .25s var(--ease),transform .25s var(--ease);
+}
+.pillar:hover{border-color:var(--border-gold);transform:translateY(-2px)}
+.pillar-icon{
+  flex-shrink:0;
+  width:24px;height:24px;
+  color:var(--gold);
+}
+.pillar-text strong{
+  display:block;
+  font-family:'Manrope',sans-serif;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gold);
+  line-height:1.1;
+  margin-bottom:3px;
+}
+.pillar-text span{
+  font-size:12px;
+  line-height:1.3;
+  color:var(--text-dim);
+  font-weight:500;
+}
+@media (min-width:768px){
+  .pillar{padding:18px 16px;gap:12px}
+  .pillar-icon{width:28px;height:28px}
+  .pillar-text strong{font-size:13px;margin-bottom:4px}
+  .pillar-text span{font-size:13px}
+}
+
+/* ===== INVESTMENT CARD ===== */
+.invest-card{
+  background:var(--gold);
+  border:1px solid var(--gold-deep);
+  border-radius:var(--r-sm);
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  margin-bottom:18px;
+  box-shadow:0 8px 32px rgba(255,184,0,.18);
+  position:relative;
+  overflow:hidden;
+}
+.invest-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
+  animation:sheen 3.6s ease-in-out infinite;
+}
+@keyframes sheen{
+  0%,100%{transform:translateX(-100%)}
+  50%{transform:translateX(100%)}
+}
+.invest-card small{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#0a0a0a;
+  font-weight:800;
+  margin-bottom:4px;
+  position:relative;
+}
+.invest-card .invest-amount{
+  font-family:'Anton',sans-serif;
+  font-weight:400;
+  color:#0a0a0a;
+  line-height:.9;
+  letter-spacing:-.01em;
+  position:relative;
+}
+.invest-card .invest-amount .rs{font-size:24px;vertical-align:top;margin-right:4px;font-family:'Manrope',sans-serif;font-weight:800}
+.invest-card .invest-amount .num{font-size:64px}
+.invest-card .invest-only{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#0a0a0a;
+  font-weight:800;
+  margin-top:2px;
+  position:relative;
+}
+
+@media (min-width:768px){
+  .invest-card{padding:18px 22px}
+  .invest-card .invest-amount .num{font-size:72px}
+  .invest-card .invest-amount .rs{font-size:28px}
+}
+
+/* ===== CTA BUTTON ===== */
+.cta-wrap{margin-top:24px}
+.cta-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  background:var(--neon);
+  color:#0a0a0a;
+  font-family:'Manrope',sans-serif;
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:20px 24px;
+  border-radius:var(--r-md);
+  border:none;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  box-shadow:
+    0 0 0 1px var(--neon-deep),
+    0 8px 0 var(--neon-dark),
+    0 16px 40px rgba(153,255,0,.35);
+  transition:transform .15s var(--ease),box-shadow .15s var(--ease);
+  animation:ctaPulse 2.2s ease-in-out infinite;
+}
+.cta-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 0 0 1px var(--neon-deep),
+    0 10px 0 var(--neon-dark),
+    0 22px 56px rgba(153,255,0,.5);
+}
+.cta-btn:active{
+  transform:translateY(4px);
+  box-shadow:
+    0 0 0 1px var(--neon-deep),
+    0 4px 0 var(--neon-dark),
+    0 8px 24px rgba(153,255,0,.3);
+}
+.cta-btn::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);
+  transform:translateX(-100%);
+  animation:btnSheen 3s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes btnSheen{
+  0%{transform:translateX(-100%)}
+  60%,100%{transform:translateX(100%)}
+}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 0 0 1px var(--neon-deep),0 8px 0 var(--neon-dark),0 16px 40px rgba(153,255,0,.35)}
+  50%{box-shadow:0 0 0 1px var(--neon-deep),0 8px 0 var(--neon-dark),0 16px 56px rgba(153,255,0,.6)}
+}
+.cta-btn svg{width:20px;height:20px;flex-shrink:0}
+@media (min-width:768px){
+  .cta-btn{font-size:22px;padding:24px 32px}
+}
+
+.cta-foot{
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-top:18px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.cta-foot::before,.cta-foot::after{
+  content:'';width:24px;height:1px;background:var(--border-strong);
+}
+.cta-foot strong{color:var(--gold);font-weight:700}
+
+/* ============================================================
+   SECTION — REGRAS DO EVENTO
+   ============================================================ */
+.section{
+  padding:64px 0;
+  position:relative;
+}
+@media (min-width:768px){
+  .section{padding:96px 0}
+}
+
+.section-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  font-weight:700;
+  margin-bottom:18px;
+}
+.section-tag span{color:var(--gold)}
+
+.section-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:clamp(34px, 8.5vw, 64px);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  color:var(--text);
+  margin-bottom:32px;
+  font-variation-settings:"opsz" 96;
+}
+.section-title em{color:var(--gold)}
+@media (min-width:768px){
+  .section-title{margin-bottom:48px;max-width:900px}
+}
+
+/* rules grid */
+.rules-grid{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+@media (min-width:768px){
+  .rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+}
+
+.rule-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  padding:24px 22px;
+  position:relative;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+  overflow:hidden;
+}
+.rule-card:hover{border-color:var(--border-gold);transform:translateY(-3px)}
+.rule-card.featured{
+  border-color:var(--border-gold);
+  background:linear-gradient(135deg,rgba(255,184,0,.06),transparent 60%);
+  box-shadow:0 0 60px rgba(255,184,0,.06);
+}
+.rule-num{
+  font-family:'Anton',sans-serif;
+  font-size:54px;
+  line-height:.9;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--gold);
+  letter-spacing:-.02em;
+  margin-bottom:14px;
+  display:inline-block;
+}
+.rule-card h3{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:22px;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  color:var(--text);
+  margin-bottom:10px;
+}
+.rule-card p{
+  font-size:15px;
+  line-height:1.5;
+  color:var(--text-dim);
+  font-weight:400;
+}
+.rule-card p strong{color:var(--gold);font-weight:700}
+@media (min-width:768px){
+  .rule-card{padding:32px 28px}
+  .rule-num{font-size:72px}
+  .rule-card h3{font-size:26px}
+  .rule-card p{font-size:16px}
+}
+
+/* small chip on featured rule */
+.rule-chip{
+  position:absolute;
+  top:18px;right:18px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#0a0a0a;
+  background:var(--gold);
+  padding:4px 8px;
+  border-radius:100px;
+  font-weight:800;
+}
+
+/* ============================================================
+   SECTION — DISCOVER (3 CHECKMARKS)
+   ============================================================ */
+.discover{
+  background:var(--bg-2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.discover-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+@media (min-width:768px){
+  .discover-list{gap:18px}
+}
+
+.discover-item{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  padding:22px 22px 22px 22px;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.discover-item::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:var(--gold);
+  transform:scaleY(0);
+  transform-origin:top;
+  transition:transform .35s var(--ease);
+}
+.discover-item:hover{border-color:var(--border-gold);transform:translateX(4px)}
+.discover-item:hover::before{transform:scaleY(1)}
+
+.discover-check{
+  flex-shrink:0;
+  width:32px;height:32px;
+  border-radius:50%;
+  background:var(--gold);
+  color:#0a0a0a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:2px;
+  box-shadow:0 0 18px rgba(255,184,0,.3);
+}
+.discover-check svg{width:18px;height:18px}
+
+.discover-content{flex:1;min-width:0}
+.discover-content strong{
+  display:block;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:18px;
+  line-height:1.15;
+  letter-spacing:-.02em;
+  color:var(--text);
+  margin-bottom:6px;
+}
+.discover-content p{
+  font-size:14.5px;
+  line-height:1.5;
+  color:var(--text-dim);
+  font-weight:400;
+}
+.discover-content p em{color:var(--gold);font-weight:700}
+@media (min-width:768px){
+  .discover-item{padding:28px 32px;gap:22px}
+  .discover-check{width:40px;height:40px}
+  .discover-check svg{width:22px;height:22px}
+  .discover-content strong{font-size:24px;margin-bottom:8px}
+  .discover-content p{font-size:17px}
+}
+
+/* ============================================================
+   SECTION — FINAL CTA
+   ============================================================ */
+.final{
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.final::before{
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:120%;
+  height:600px;
+  background:radial-gradient(ellipse,rgba(255,184,0,.10),transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+.final > *{position:relative;z-index:1}
+
+.final-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:700;
+  margin-bottom:24px;
+  display:inline-block;
+}
+.final-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:clamp(40px, 11vw, 96px);
+  line-height:.98;
+  letter-spacing:-.04em;
+  margin-bottom:20px;
+  font-variation-settings:"opsz" 96;
+}
+.final-title em{
+  display:inline-block;
+  background:linear-gradient(180deg,#FFE368,#FFB800 60%,#B88800);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-style:italic;
+  transform:skew(-4deg);
+}
+.final-sub{
+  font-size:16px;
+  line-height:1.55;
+  color:var(--text-dim);
+  max-width:520px;
+  margin:0 auto 32px;
+  font-weight:400;
+}
+.final-sub strong{color:var(--text);font-weight:700}
+@media (min-width:768px){
+  .final-sub{font-size:20px;margin-bottom:48px}
+}
+
+.invest-big{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  background:var(--gold);
+  border:1px solid var(--gold-deep);
+  padding:20px 40px;
+  border-radius:var(--r-md);
+  margin-bottom:32px;
+  box-shadow:0 12px 48px rgba(255,184,0,.25);
+  position:relative;
+  overflow:hidden;
+}
+.invest-big::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.2) 50%,transparent 70%);
+  animation:sheen 3.6s ease-in-out infinite;
+}
+.invest-big small{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#0a0a0a;
+  font-weight:800;
+  margin-bottom:4px;
+  position:relative;
+}
+.invest-big .price{
+  font-family:'Anton',sans-serif;
+  color:#0a0a0a;
+  line-height:.9;
+  letter-spacing:-.01em;
+  position:relative;
+}
+.invest-big .price .rs{font-size:28px;vertical-align:top;margin-right:6px;font-family:'Manrope',sans-serif;font-weight:800}
+.invest-big .price .num{font-size:84px}
+.invest-big .only{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#0a0a0a;
+  font-weight:800;
+  margin-top:4px;
+  position:relative;
+}
+
+.final .cta-btn{max-width:520px;margin:0 auto}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  padding:32px 0 48px;
+  border-top:1px solid var(--border);
+  margin-top:24px;
+  text-align:center;
+}
+footer small{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  font-weight:600;
+}
+footer small em{color:var(--gold);font-weight:700}
+
+/* ============================================================
+   FLOATING URGENCY (mobile sticky bar)
+   ============================================================ */
+.sticky-urgency{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:rgba(10,10,10,.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--border-gold);
+  padding:10px 16px;
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  z-index:50;
+  transform:translateY(100%);
+  transition:transform .4s var(--ease);
+}
+.sticky-urgency.visible{transform:translateY(0)}
+.sticky-urgency.visible{display:flex}
+.sticky-urgency-text{
+  flex:1;
+  min-width:0;
+  font-family:'Manrope',sans-serif;
+  font-size:12px;
+  line-height:1.2;
+  color:var(--text-dim);
+  font-weight:600;
+}
+.sticky-urgency-text strong{color:var(--gold);font-weight:800;display:block;font-size:13px}
+.sticky-urgency a{
+  flex-shrink:0;
+  background:var(--neon);
+  color:#0a0a0a;
+  font-family:'Manrope',sans-serif;
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:11px 16px;
+  border-radius:8px;
+  white-space:nowrap;
+  box-shadow:0 0 0 1px var(--neon-deep),0 4px 0 var(--neon-dark);
+}
+@media (min-width:768px){
+  .sticky-urgency{display:none!important}
+}
+
+/* ============================================================
+   ENTRANCE ANIMATIONS
+   ============================================================ */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+
+    <div class="badge-top">21 dias para colocar dinheiro no seu bolso</div>
+
+    <img class="hero-logo" src="assets/DDR_LOGO.png" alt="DDR · Desafio Dinheiro Rápido" width="720" height="858" fetchpriority="high">
+
+
+    <div class="dates-strip">
+      <div class="dates-strip-text">De <strong>21 de maio</strong> a <strong>11 de junho</strong> · Sala fechada no Google Meet</div>
+    </div>
+
+    <!-- 4 PILLARS -->
+    <div class="pillars">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2" fill="currentColor"/>
+        </svg>
+        <div class="pillar-text">
+          <strong>FOCO</strong>
+          <span>no que funciona</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <div class="pillar-text">
+          <strong>AÇÃO</strong>
+          <span>diária e prática</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+          <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+        </svg>
+        <div class="pillar-text">
+          <strong>RESULTADOS</strong>
+          <span>reais em 21 dias</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+        <div class="pillar-text">
+          <strong>DINHEIRO</strong>
+          <span>no seu bolso</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="invest-card">
+      <small>INVESTIMENTO</small>
+      <span class="invest-amount"><span class="rs">R$</span><span class="num">21</span></span>
+      <span class="invest-only">APENAS</span>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <a class="cta-btn" href="https://pay.kiwify.com.br/kjiP2ml" target="_blank" rel="noopener">
+        TOPO O DESAFIO!
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+      <p class="cta-foot"><strong>Vagas limitadas</strong> · Sala fechada no Google Meet</p>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       REGRAS DO DESAFIO
+       ============================================================ -->
+  <section class="section reveal">
+    <div class="section-tag"><span>BLOCO 01</span> · REGRAS DO DESAFIO</div>
+    <h2 class="section-title">21 dias para mudar a sua <em>realidade financeira</em>.</h2>
+
+    <div class="rules-grid">
+
+      <div class="rule-card">
+        <div class="rule-num">01</div>
+        <h3>Sem "pra próxima".</h3>
+        <p>21 dias exatos de execução. Começa na hora que você apertar o gatilho — sem atrasar, sem desculpa.</p>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">02</div>
+        <h3>Sem enrolação.</h3>
+        <p>Sem motivação barata. Apenas <strong>o que coloca dinheiro no seu bolso AGORA</strong>.</p>
+      </div>
+
+      <div class="rule-card featured">
+        <div class="rule-chip">VAGAS LIMITADAS</div>
+        <div class="rule-num">03</div>
+        <h3>Porta fecha rápido.</h3>
+        <p>Sala fechada, acesso restrito. <strong>Quem não topar, fica de fora.</strong> Aqui dentro, só quem aceita o desafio.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       O QUE VOCÊ VAI DESCOBRIR
+       ============================================================ -->
+  <section class="section discover reveal">
+    <div class="section-tag"><span>BLOCO 02</span> · O QUE VOCÊ VAI DESCOBRIR</div>
+    <h2 class="section-title">3 chaves para <em>destravar</em><br>o dinheiro rápido.</h2>
+
+    <ul class="discover-list">
+      <li class="discover-item">
+        <span class="discover-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <div class="discover-content">
+          <strong>Ativação de Renda Imediata</strong>
+          <p>Como ativar dinheiro rápido para colocar dinheiro no bolso <em>no mesmo dia</em>.</p>
+        </div>
+      </li>
+
+      <li class="discover-item">
+        <span class="discover-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <div class="discover-content">
+          <strong>PIX em 24h</strong>
+          <p>Como fazer o dinheiro que <em>já é seu por direito</em> voltar para a sua mão.</p>
+        </div>
+      </li>
+
+      <li class="discover-item">
+        <span class="discover-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </span>
+        <div class="discover-content">
+          <strong>Imã de Oportunidades</strong>
+          <p>O segredo de posicionamento que faz <em>as pessoas certas te procurarem</em> com dinheiro na mão.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA
+       ============================================================ -->
+  <section class="section final reveal">
+    <div class="final-eyebrow">// O ÚLTIMO RECADO</div>
+    <h1 class="final-title">Aceita o<br><em>desafio?</em></h1>
+    <p class="final-sub">
+      <strong>21 dias. R$21. Uma decisão.</strong><br>
+      Você não precisa de sorte. Precisa de execução.
+    </p>
+
+    <div class="invest-big">
+      <small>INVESTIMENTO</small>
+      <span class="price"><span class="rs">R$</span><span class="num">21</span></span>
+      <span class="only">APENAS</span>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta-btn" href="https://pay.kiwify.com.br/kjiP2ml" target="_blank" rel="noopener">
+        TOPO O DESAFIO!
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+      <p class="cta-foot">Pagamento seguro · Acesso imediato após confirmação</p>
+    </div>
+  </section>
+
+  <footer>
+    <small>© DDR · <em>Desafio Dinheiro Rápido</em> · 21 dias para mudar sua realidade financeira</small>
+  </footer>
+
+</main>
+
+<!-- Mobile sticky CTA bar -->
+<div class="sticky-urgency" id="stickyBar">
+  <div class="sticky-urgency-text">
+    <strong>Vagas limitadas · R$21</strong>
+    21 dias para colocar dinheiro no bolso
+  </div>
+  <a href="https://pay.kiwify.com.br/kjiP2ml" target="_blank" rel="noopener">TOPO!</a>
+</div>
+
+<script>
+// reveal-on-scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  });
+},{threshold:.12,rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// sticky bar appears after scrolling past hero on mobile
+const stickyBar = document.getElementById('stickyBar');
+const hero = document.querySelector('.hero');
+let lastShow = false;
+window.addEventListener('scroll', ()=>{
+  if(window.innerWidth >= 768) return;
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  const shouldShow = heroBottom < 0;
+  if(shouldShow !== lastShow){
+    stickyBar.classList.toggle('visible', shouldShow);
+    lastShow = shouldShow;
+  }
+}, {passive:true});
+</script>
+
+</body>
+</html>
